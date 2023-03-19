@@ -1,0 +1,14 @@
+#Определить платёжную систему по номеру карты.
+s = input()
+s_str = ''.join(s)
+if (len(s_str) != 19):
+    print("Не существует")
+else:
+    if s_str[0] == '4':
+        print("Visa")
+    if s_str[0] == '5':
+        print("Mastercard")
+    if s_str[0] == '3':
+        print("American Express")
+    else:
+        print('No info...')
