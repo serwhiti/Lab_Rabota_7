@@ -1,0 +1,24 @@
+# Вывести текст построчно по 40 символов в строке без переносов.
+def line_by_line(line, width = 40):
+    whitespace = set(" \n\t\r")
+    length = len(line)
+    gog = 0
+
+    while gog < (length - width):
+        end = gog + width + 1
+        temp = line[start:end]
+        try:
+            end = gog + temp.index('\n')
+        except ValueError:
+            for i, ch in enumerate(reversed(temp)):
+                if ch in whitespace:
+                    end -= i
+                    break
+        yield line[start:end]
+        gog = end + 1
+    yield line[start:]
+    
+# Проверяем работу с произвольным текстом 
+text = "Настигает нас снежная буря, будто волки, в полях бедокуря. Что же делать, дружок? Ночь клыками пронзит меня насквозь, заморозит и сделает настом, в ледяной превращая кусок."
+for line in line_by_line(text, 40):
+    print(line)
